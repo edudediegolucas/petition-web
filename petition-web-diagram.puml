@@ -1,0 +1,17 @@
+@startuml
+
+actor user
+node "petition-web" {
+    node "Jetty-instance" #Gold
+    database "Spring-IoC" as spring {
+        database users #LightBlue
+        database petitions #LightGreen
+    }
+}
+
+user => "Jetty-instance" : login
+user => "Jetty-instance" : userData
+petitions <==> "Jetty-instance" : petitions
+users <-==> "Jetty-instance" : users
+
+@enduml

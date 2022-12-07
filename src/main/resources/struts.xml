@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <package name="petition-web" extends="struts-default">
+        <interceptors>
+            <interceptor name="login" class="es.edudediegolucas.petitionweb.action.interceptor.LoginInterceptor"/>
+            <interceptor-stack name="appDefault">
+                <interceptor-ref name="login"/>
+                <interceptor-ref name="defaultStack">
+                    <!-- see: https://struts.apache.org/getting-started/http-session -->
+                    <param name="params.excludeParams">dojo..*,^struts..*,^session..*,^request..*,^application..*,^servlet(Request|Response)..*,parameters...*
+                    </param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="appDefault"/>
+
+        <global-results>
+            <result name="loginRedirect" type="redirect">/login</result>
+        </global-results>
+
+        <action name="*">
+            <result>/index.jsp</result>
+        </action>
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+        <action name="">
+            <result type="redirect">/index.jsp</result>
+        </action>
+        <action name="login" class="es.edudediegolucas.petitionweb.action.LoginAction">
+            <result name="success">/menu.jsp</result>
+            <result name="login">/registration.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="register" method="registerUser" class="es.edudediegolucas.petitionweb.action.LoginAction">
+            <result name="success">/menu.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="menu" class="es.edudediegolucas.petitionweb.action.MenuAction">
+            <result name="success">/menu.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="data" class="es.edudediegolucas.petitionweb.action.UserDataAction">
+            <result name="success">/userdata.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="petition" class="es.edudediegolucas.petitionweb.action.PetitionAction">
+            <result name="success">/petition.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="savePetition" method="savePetition" class="es.edudediegolucas.petitionweb.action.PetitionAction">
+            <result name="success">/petitionSaved.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="friends" class="es.edudediegolucas.petitionweb.action.ListFriendsAction">
+            <result name="success">/friends.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="dismiss" class="es.edudediegolucas.petitionweb.action.DismissAction">
+            <result name="success">/index.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="logout" class="es.edudediegolucas.petitionweb.action.LogoutAction">
+            <result name="success">/index.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+    </package>
+</struts>
