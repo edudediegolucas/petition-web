@@ -2,7 +2,7 @@ package es.edudediegolucas.petitionweb.action;
 
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
-import es.edudediegolucas.petitionweb.repository.user.UserEntitiy;
+import es.edudediegolucas.petitionweb.repository.user.UserEntity;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class PetitionActionTest extends BaseActionTest {
@@ -14,17 +14,17 @@ public class PetitionActionTest extends BaseActionTest {
   }
 
   public void testPetition() throws Exception {
-    UserEntitiy userEntitiy = createUserEntity();
+    UserEntity userEntity = createUserEntity();
     ActionProxy actionProxy = getActionProxy("/petition");
-    setValueInSession(userEntitiy.getId(), actionProxy);
+    setValueInSession(userEntity.getId(), actionProxy);
     String actionSupport = actionProxy.execute();
     assertEquals(ActionSupport.SUCCESS, actionSupport);
   }
 
   public void testSavePetitionError() throws Exception {
-    UserEntitiy userEntitiy = createUserEntity();
+    UserEntity userEntity = createUserEntity();
     ActionProxy actionProxy = getActionProxy("/savePetition");
-    setValueInSession(userEntitiy.getId(), actionProxy);
+    setValueInSession(userEntity.getId(), actionProxy);
     String actionSupport = actionProxy.execute();
     assertEquals(ActionSupport.ERROR, actionSupport);
   }
@@ -36,9 +36,9 @@ public class PetitionActionTest extends BaseActionTest {
   }
 
   public void testSavePetition() throws Exception {
-    UserEntitiy userEntitiy = createUserEntity();
+    UserEntity userEntity = createUserEntity();
     ActionProxy actionProxy = getActionProxy("/savePetition");
-    setValueInSession(userEntitiy.getId(), actionProxy);
+    setValueInSession(userEntity.getId(), actionProxy);
     request.setParameter("petitionBean.name", RandomStringUtils.randomAlphanumeric(10));
     request.setParameter("petitionBean.data", RandomStringUtils.randomAlphanumeric(64));
     String actionSupport = actionProxy.execute();

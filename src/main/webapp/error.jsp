@@ -7,7 +7,7 @@
     <title>Petition Web - Error</title>
 </head>
 <body style="text-align: center">
-<h1>Error :(</h1>
-<s:a href="/petition-web">Go to index</s:a>
+<h1>Error 😢</h1>
+<s:a href="/petition-web/index">Go to index</s:a>
 </body>
 </html>

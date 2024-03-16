@@ -2,7 +2,7 @@ package es.edudediegolucas.petitionweb.action;
 
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
-import es.edudediegolucas.petitionweb.repository.user.UserEntitiy;
+import es.edudediegolucas.petitionweb.repository.user.UserEntity;
 
 public class MenuActionTest extends BaseActionTest {
 
@@ -13,9 +13,9 @@ public class MenuActionTest extends BaseActionTest {
   }
 
   public void testMenu() throws Exception {
-    UserEntitiy userEntitiy = createUserEntity();
+    UserEntity userEntity = createUserEntity();
     ActionProxy actionProxy = getActionProxy("/menu");
-    setValueInSession(userEntitiy.getId(), actionProxy);
+    setValueInSession(userEntity.getId(), actionProxy);
     String actionSupport = actionProxy.execute();
     assertEquals(ActionSupport.SUCCESS, actionSupport);
   }

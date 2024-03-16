@@ -4,10 +4,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 import es.edudediegolucas.petitionweb.repository.petition.PetitionRepository;
 import es.edudediegolucas.petitionweb.repository.user.UserRepository;
+import java.util.Map;
 import org.apache.struts2.action.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Map;
 
 public abstract class BaseAction extends ActionSupport implements SessionAware, ParameterNameAware {
 

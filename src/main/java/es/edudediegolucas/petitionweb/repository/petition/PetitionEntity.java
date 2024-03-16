@@ -1,9 +1,8 @@
 package es.edudediegolucas.petitionweb.repository.petition;
 
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Value;
-
-import java.time.LocalDateTime;
 
 @Value
 @Builder(toBuilder = true)
