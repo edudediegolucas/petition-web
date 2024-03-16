@@ -2,10 +2,9 @@ package es.edudediegolucas.petitionweb.action;
 
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
-import es.edudediegolucas.petitionweb.repository.user.UserEntitiy;
-import org.apache.commons.lang3.RandomUtils;
-
+import es.edudediegolucas.petitionweb.repository.user.UserEntity;
 import java.util.stream.IntStream;
+import org.apache.commons.lang3.RandomUtils;
 
 public class ListFriendsActionTest extends BaseActionTest {
 
@@ -16,11 +15,11 @@ public class ListFriendsActionTest extends BaseActionTest {
   }
 
   public void testFriends() throws Exception {
-    UserEntitiy userEntitiy = createUserEntity();
+    UserEntity userEntity = createUserEntity();
     IntStream.range(0, RandomUtils.nextInt(1, 10))
-            .forEach(ignored -> createUserEntity());
+        .forEach(ignored -> createUserEntity());
     ActionProxy actionProxy = getActionProxy("/friends");
-    setValueInSession(userEntitiy.getId(), actionProxy);
+    setValueInSession(userEntity.getId(), actionProxy);
     String actionSupport = actionProxy.execute();
     assertEquals(ActionSupport.SUCCESS, actionSupport);
   }

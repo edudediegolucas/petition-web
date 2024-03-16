@@ -2,12 +2,11 @@ package es.edudediegolucas.petitionweb.action;
 
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
-import es.edudediegolucas.petitionweb.repository.user.UserEntitiy;
+import es.edudediegolucas.petitionweb.repository.user.UserEntity;
 import es.edudediegolucas.petitionweb.repository.user.UserRepository;
-import org.apache.commons.lang3.RandomStringUtils;
-
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class LoginActionTest extends BaseActionTest {
 
@@ -37,9 +36,9 @@ public class LoginActionTest extends BaseActionTest {
     String password = RandomStringUtils.randomAlphanumeric(10);
     String name = RandomStringUtils.randomAlphanumeric(6);
     String email = RandomStringUtils.randomAlphanumeric(4)
-            .concat("@")
-            .concat(RandomStringUtils.randomAlphanumeric(6))
-            .concat(".com");
+        .concat("@")
+        .concat(RandomStringUtils.randomAlphanumeric(6))
+        .concat(".com");
     UserRepository userRepository = (UserRepository) applicationContext.getBean(USER_REPOSITORY_BEAN);
     userRepository.insertUser(login, password.toCharArray(), name, email);
     request.setParameter("loginBean.login", login);
@@ -56,9 +55,9 @@ public class LoginActionTest extends BaseActionTest {
     String password = RandomStringUtils.randomAlphanumeric(10);
     String name = RandomStringUtils.randomAlphanumeric(6);
     String email = RandomStringUtils.randomAlphanumeric(4)
-            .concat("@")
-            .concat(RandomStringUtils.randomAlphanumeric(6))
-            .concat(".com");
+        .concat("@")
+        .concat(RandomStringUtils.randomAlphanumeric(6))
+        .concat(".com");
     request.setParameter("loginBean.login", login);
     request.setParameter("loginBean.password", password);
     request.setParameter("loginBean.name", name);
@@ -75,10 +74,10 @@ public class LoginActionTest extends BaseActionTest {
   }
 
   public void testRegisterAlready() throws Exception {
-    UserEntitiy userEntitiy = createUserEntity();
+    UserEntity userEntity = createUserEntity();
     ActionProxy actionProxy = getActionProxy("/register");
     Map<String, Object> sessionMap = new HashMap<>();
-    sessionMap.put(SESSION_USER_ID, userEntitiy.getId());
+    sessionMap.put(SESSION_USER_ID, userEntity.getId());
     actionProxy.getInvocation().getInvocationContext().withSession(sessionMap);
     String actionSupport = actionProxy.execute();
     assertEquals(ActionSupport.SUCCESS, actionSupport);

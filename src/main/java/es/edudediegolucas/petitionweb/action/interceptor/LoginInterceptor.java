@@ -5,7 +5,6 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import es.edudediegolucas.petitionweb.action.LoginAction;
 import es.edudediegolucas.petitionweb.action.LoginRequired;
-
 import java.util.Map;
 import java.util.Objects;
 

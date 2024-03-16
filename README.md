@@ -10,6 +10,12 @@ This repo contains a struts2 based web application where a user can:
 
 It uses Spring framework too and has include as maven dependency a Jetty server instance to run the application.
 
+## Config
+
+* JDK17
+* Spring 5+
+* Struts 6+
+
 ## Build
 
 Simply execute

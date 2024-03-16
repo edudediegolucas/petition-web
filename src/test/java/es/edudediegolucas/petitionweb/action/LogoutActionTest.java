@@ -2,7 +2,7 @@ package es.edudediegolucas.petitionweb.action;
 
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
-import es.edudediegolucas.petitionweb.repository.user.UserEntitiy;
+import es.edudediegolucas.petitionweb.repository.user.UserEntity;
 
 public class LogoutActionTest extends BaseActionTest {
 
@@ -13,9 +13,9 @@ public class LogoutActionTest extends BaseActionTest {
   }
 
   public void testLogout() throws Exception {
-    UserEntitiy userEntitiy = createUserEntity();
+    UserEntity userEntity = createUserEntity();
     ActionProxy actionProxy = getActionProxy("/logout");
-    setValueInSession(userEntitiy.getId(), actionProxy);
+    setValueInSession(userEntity.getId(), actionProxy);
     String actionSupport = actionProxy.execute();
     assertEquals(ActionSupport.SUCCESS, actionSupport);
     assertTrue(actionProxy.getInvocation().getInvocationContext().getSession().isEmpty());
